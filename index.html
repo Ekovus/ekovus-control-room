@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E K O V U S // MIRAGE</title>
+  <title>E K O V U S // MIRAGE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
   <style>
     :root {
       --void: #020406;
@@ -15,17 +18,17 @@
 
     body {
       background-color: var(--void);
-      /* Fixed the background property so it doesn't overwrite the void color */
-      background-image: 
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-image: /* ... existing gradients ... */ ;
       background-size: 100% 4px, 3px 100%;
       color: var(--wireframe);
-      font-family: "SF Mono", "Courier New", monospace;
+      /* Swap this line right here: */
+      font-family: 'Share Tech Mono', monospace; 
       overflow-x: hidden;
       min-height: 100vh;
     }
-
+h1, h2, h3, .logo-wireframe, .section-label {
+      font-family: 'Rajdhani', sans-serif;
+    }
     /* Replaced the cliché tropes with a subtle station indicator */
     .station-status {
       position: fixed;
