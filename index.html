@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E K O V U S // MIRAGE</title>
-  <title>E K O V U S // MIRAGE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --void: #020406;
+      --void: #020406; /* The deep black void is back! */
       --wireframe: #00ffff;
       --dim-cyan: rgba(0, 255, 255, 0.2);
     }
@@ -18,18 +20,22 @@
 
     body {
       background-color: var(--void);
-      background-image: /* ... existing gradients ... */ ;
+      background-image: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
       background-size: 100% 4px, 3px 100%;
       color: var(--wireframe);
-      /* Swap this line right here: */
-      font-family: 'Share Tech Mono', monospace; 
+      font-family: 'Share Tech Mono', monospace; /* New digital readout font */
       overflow-x: hidden;
       min-height: 100vh;
     }
-h1, h2, h3, .logo-wireframe, .section-label {
+
+    /* New sharp geometric font for the branding */
+    h1, h2, h3, .logo-wireframe, .section-label {
       font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 4px;
     }
-    /* Replaced the cliché tropes with a subtle station indicator */
+
     .station-status {
       position: fixed;
       top: 30px;
@@ -53,7 +59,7 @@ h1, h2, h3, .logo-wireframe, .section-label {
       font-size: clamp(30px, 8vw, 60px);
       letter-spacing: 15px;
       text-transform: uppercase;
-      font-weight: 200;
+      font-weight: 600;
       position: relative;
     }
 
@@ -65,7 +71,7 @@ h1, h2, h3, .logo-wireframe, .section-label {
 
     .section-label {
       color: var(--wireframe);
-      font-size: 10px;
+      font-size: 12px;
       margin-bottom: 40px;
       border-left: 2px solid var(--wireframe);
       padding-left: 10px;
@@ -104,13 +110,13 @@ h1, h2, h3, .logo-wireframe, .section-label {
     }
 
     .portal-item h3 {
-      font-size: 14px;
+      font-size: 16px;
       margin-bottom: 10px;
       letter-spacing: 3px;
     }
 
     .portal-item p {
-      font-size: 11px;
+      font-size: 12px;
       line-height: 1.8;
       opacity: 0.6;
       margin-bottom: 20px;
@@ -119,7 +125,7 @@ h1, h2, h3, .logo-wireframe, .section-label {
     .access-link {
       color: var(--wireframe);
       text-decoration: none;
-      font-size: 10px;
+      font-size: 11px;
       border: 1px solid var(--wireframe);
       padding: 8px 20px;
       display: inline-block;
@@ -134,7 +140,7 @@ h1, h2, h3, .logo-wireframe, .section-label {
     footer {
       border-top: 1px solid var(--dim-cyan);
       padding: 20px;
-      font-size: 9px;
+      font-size: 10px;
       display: flex;
       justify-content: space-between;
       opacity: 0.5;
@@ -157,7 +163,7 @@ h1, h2, h3, .logo-wireframe, .section-label {
   <main>
     <div class="section-label">TRANSMISSION_FEEDS</div>
     
-    <div class="portal-grid">
+    <div class="portal-grid" id="link-grid">
       <div class="portal-item">
         <h3>LATEST_ENTRY</h3>
         <p>Speakeasy underground dark energy. Technical house designed for the transition from twilight to early morning.</p>
@@ -169,7 +175,8 @@ h1, h2, h3, .logo-wireframe, .section-label {
         <p>Continuous mix series. Opening support utility and late-night atmosphere protocols.</p>
         <a href="https://soundcloud.com/ekovus/sets/lowlight-fm-and-opening-support-sets" class="access-link">ACCESS_STREAM</a>
       </div>
-    </div>
+      
+      </div>
   </main>
 
   <footer>
@@ -179,7 +186,6 @@ h1, h2, h3, .logo-wireframe, .section-label {
   </footer>
 
   <script>
-    // Cleaned up the JS to remove the clunky timer and just focus on the subtle BPM drift
     setInterval(() => {
       document.getElementById('bpm').innerText = (124 + (Math.random() * 0.2 - 0.1)).toFixed(2);
     }, 1000);
