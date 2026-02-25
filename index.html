@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ekovus</title>
+  <title>Ekovus — Electronic Press Kit</title>
 
   <style>
     :root {
@@ -21,7 +21,7 @@
 
     body {
       min-height: 100vh;
-      font-family: monospace;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
       background-color: var(--bg);
       color: var(--text);
       position: relative;
@@ -64,7 +64,7 @@
       color: var(--text);
       text-decoration: none;
       margin-left: 20px;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -79,15 +79,25 @@
       padding: 80px 20px 40px;
     }
 
+    section {
+      margin-bottom: 56px;
+    }
+
     .hero {
       text-align: center;
-      padding: 40px 0 80px;
+      padding: 40px 0 64px;
     }
 
     .hero h1 {
       font-size: 24px;
-      margin-bottom: 32px;
+      margin-bottom: 16px;
       line-height: 1.4;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 32px;
     }
 
     .button {
@@ -96,7 +106,7 @@
       color: var(--accent);
       padding: 10px 28px;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       transition: background-color 0.15s ease, color 0.15s ease,
@@ -109,10 +119,6 @@
       box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
     }
 
-    section {
-      margin-bottom: 56px;
-    }
-
     .section-title {
       font-size: 16px;
       letter-spacing: 0.16em;
@@ -120,6 +126,15 @@
       color: var(--accent);
       margin-bottom: 24px;
       text-align: center;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      max-width: 520px;
+      margin: 0 auto 24px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
     }
 
     .music-grid {
@@ -131,16 +146,33 @@
 
     .card {
       background-color: var(--panel);
-      border: 1px solid var(--accent);
+      border: 1px solid rgba(0, 255, 255, 0.4);
       padding: 16px;
-      width: 220px;
+      width: 260px;
       text-align: left;
       font-size: 14px;
     }
 
     .card-title {
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 8px;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .card a {
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
     }
 
     .dates-list {
@@ -149,6 +181,7 @@
       margin: 0 auto;
       text-align: left;
       font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
     }
 
     .dates-list li {
@@ -158,9 +191,10 @@
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 24px 20px;
       background-color: rgba(0, 0, 20, 0.9);
-      font-size: 14px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
     }
 
     footer a {
@@ -172,6 +206,19 @@
       text-decoration: underline;
     }
 
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .footer-status {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
     @media (max-width: 600px) {
       header {
         padding: 12px 16px;
@@ -179,11 +226,11 @@
 
       nav a {
         margin-left: 12px;
-        font-size: 12px;
+        font-size: 11px;
       }
 
       .hero {
-        padding: 32px 0 56px;
+        padding: 32px 0 48px;
       }
 
       .hero h1 {
@@ -207,41 +254,76 @@
   </header>
 
   <main>
+    <!-- HERO / TOP EPK BLURB -->
     <section class="hero">
-      <h1>Trance-infused techno and low-slung house for late rooms.</h1>
-      <a href="#" class="button">Listen</a>
+      <h1>Ekovus</h1>
+      <p>Niche deep house and trance-infused house for late rooms.</p>
+      <a href="https://soundcloud.com/ekovus" class="button" target="_blank" rel="noreferrer">
+        Listen on SoundCloud
+      </a>
     </section>
 
+    <!-- MUSIC / PRESS-USEFUL LINKS -->
     <section id="music">
       <h2 class="section-title">Music</h2>
+      <p class="section-sub">
+        Warm bass, hypnotic grooves, and small hours. Below are the main places to listen and pull links.
+      </p>
       <div class="music-grid">
         <article class="card">
-          <div class="card-title">Release 1</div>
-          <div>Track details here.</div>
+          <div class="card-title">Featured track or mix</div>
+          <div class="card-body">
+            Current focus slot. Update this link when the priority release shifts.
+          </div>
+          <a href="https://soundcloud.com/ekovus" target="_blank" rel="noreferrer">
+            Open SoundCloud
+          </a>
         </article>
+
         <article class="card">
-          <div class="card-title">Release 2</div>
-          <div>Track details here.</div>
+          <div class="card-title">lowlightFM series</div>
+          <div class="card-body">
+            Late runs and slow-burn sets for trains, screens, and quiet apartments.
+          </div>
+          <a href="https://soundcloud.com/ekovus/sets/lowlight-fm-and-opening-support-sets" target="_blank" rel="noreferrer">
+            Play the series
+          </a>
         </article>
+
         <article class="card">
-          <div class="card-title">Release 3</div>
-          <div>Track details here.</div>
+          <div class="card-title">On Spotify</div>
+          <div class="card-body">
+            Niche deep house and trance-infused house in one place for repeat plays.
+          </div>
+          <a href="https://open.spotify.com/artist/3JvyanCuL0mPC2wCZdOyoT?si=Qs_SmgE5SdaK1NuJrvyXWA" target="_blank" rel="noreferrer">
+            Open Spotify
+          </a>
         </article>
       </div>
     </section>
 
+    <!-- DATES / BOOKINGS -->
     <section id="dates">
       <h2 class="section-title">Dates</h2>
+      <p class="section-sub">
+        Upcoming nights and recent rooms. Updated as shows confirm.
+      </p>
       <ul class="dates-list">
-        <li>Date 1 — Location</li>
-        <li>Date 2 — Location</li>
-        <li>Date 3 — Location</li>
+        <li>No public dates listed yet.</li>
       </ul>
     </section>
   </main>
 
   <footer id="contact">
-    <a href="mailto:contact@ekovus.com">Contact</a>
+    <div class="footer-links">
+      <a href="mailto:josh@ekovus.com">Email</a>
+      <a href="https://www.instagram.com/ekovus/" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://soundcloud.com/ekovus" target="_blank" rel="noreferrer">SoundCloud</a>
+      <a href="https://open.spotify.com/artist/3JvyanCuL0mPC2wCZdOyoT?si=Qs_SmgE5SdaK1NuJrvyXWA" target="_blank" rel="noreferrer">Spotify</a>
+    </div>
+    <div class="footer-status">
+      status: stable · buffer: 00:16:09 · &gt;_ ekovus.run
+    </div>
   </footer>
 </body>
 </html>
