@@ -1,0 +1,107 @@
+
+<div class="container">
+<header>
+<div class="header-left">
+<h1>Ekovus</h1>
+<p>Producer/DJ. Niche deep house and trance-infused house</p>
+</div>
+<div class="header-right">
+<div class="badge">
+<span class="dot"></span>
+<span>Control Room</span>
+</div>
+<div class="location">Austin, TX. live</div>
+</div>
+</header>
+
+<main>
+<div class="grid">
+<section class="panel">
+<div class="panel-label">CH-01 / Now Playing</div>
+<h2 class="panel-title">Current Focus</h2>
+<div class="panel-body">
+Main slot active. Warm bass loops here.
+<div class="player">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+</div>
+<div class="panel-footer">
+<span class="footer-left">Source: SoundCloud/Spotify</span>
+<a href="https://soundcloud.com/ekovus" class="footer-right" target="_blank">Open audio</a>
+</div>
+</section>
+
+<section class="panel">
+<div class="panel-label">CH-02 / Broadcasts</div>
+<h2 class="panel-title">lowlightFM</h2>
+<div class="panel-body">
+Late mixes for trains, screens, apartments. The long files for late floors.
+</div>
+<div class="panel-footer">
+<span class="footer-left">Series: lowlightFM</span>
+<a href="https://soundcloud.com/ekovus/sets/lowlight-fm-and-opening-support-sets" class="footer-right" target="_blank">Play series</a>
+</div>
+</section>
+
+<section class="panel">
+<div class="panel-label">CH-03 / Archive</div>
+<h2 class="panel-title">Deep Cuts</h2>
+<div class="panel-body">
+Old tracks and B-sides that hum on the drive. Rooms echo forward.
+</div>
+<div class="panel-footer">
+<span class="footer-left">Open file tree</span>
+<a href="https://soundcloud.com/ekovus" class="footer-right" target="_blank">Enter archive</a>
+</div>
+</section>
+
+<section class="panel">
+<div class="panel-label">CH-04 / Systems</div>
+<h2 class="panel-title">Tools & Experiments</h2>
+<div class="panel-body">
+Small tools, RAG tests, workflow fragments. Building in the margins.
+</div>
+<div class="panel-footer">
+<span class="footer-left">In development</span>
+<a href="#" class="footer-right">External space (soon)</a>
+</div>
+</section>
+</div>
+</main>
+
+<footer>
+<div class="footer-section">
+Contact: <a href="mailto:josh@ekovus.com">josh@ekovus.com</a>
+<a href="https://www.instagram.com/ekovus/" target="_blank">Instagram</a>
+</div>
+<div class="footer-section status-line">
+<span>status: stable</span>
+<span id="buffer">buffer: 00:16:09</span>
+<span>>_ ekovus.run <span class="blink">█</span></span>
+</div>
+</footer>
+</div>
+
+<script>
+setInterval(() => {
+const now = new Date();
+const hours = String(now.getHours()).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+const seconds = String(now.getSeconds()).padStart(2, '0');
+document.getElementById('buffer').textContent = `buffer: ${hours}:${minutes}:${seconds}`;
+}, 1000);
+</script>
+
+</body>
+</html>
