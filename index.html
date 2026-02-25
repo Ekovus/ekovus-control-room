@@ -8,7 +8,6 @@
     :root {
       --void: #020406;
       --wireframe: #00ffff;
-      --amber: #ff9d00;
       --dim-cyan: rgba(0, 255, 255, 0.2);
     }
 
@@ -16,29 +15,28 @@
 
     body {
       background-color: var(--void);
+      /* Fixed the background property so it doesn't overwrite the void color */
+      background-image: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 4px, 3px 100%;
       color: var(--wireframe);
       font-family: "SF Mono", "Courier New", monospace;
       overflow-x: hidden;
       min-height: 100vh;
-      /* Subtle scanline overlay */
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      background-size: 100% 4px, 3px 100%;
     }
 
-    /* Amber "REC" Status - Inspired by your shattered.jpg */
-    .rec-status {
+    /* Replaced the cliché tropes with a subtle station indicator */
+    .station-status {
       position: fixed;
       top: 30px;
       left: 30px;
-      color: var(--amber);
-      font-size: 12px;
+      color: var(--dim-cyan);
+      font-size: 10px;
       letter-spacing: 2px;
       z-index: 100;
-      text-shadow: 0 0 8px var(--amber);
     }
 
-    /* Floating wireframe logo */
     header {
       height: 40vh;
       display: flex;
@@ -56,7 +54,6 @@
       position: relative;
     }
 
-    /* Liminal Container */
     main {
       max-width: 800px;
       margin: 0 auto;
@@ -64,14 +61,14 @@
     }
 
     .section-label {
-      color: var(--amber);
+      color: var(--wireframe);
       font-size: 10px;
       margin-bottom: 40px;
-      border-left: 2px solid var(--amber);
+      border-left: 2px solid var(--wireframe);
       padding-left: 10px;
+      opacity: 0.7;
     }
 
-    /* Shattered Grid */
     .portal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -92,7 +89,6 @@
       transform: translateY(-5px);
     }
 
-    /* Decorative wireframe corner from Rooftop Mirage.jpg */
     .portal-item::before {
       content: "";
       position: absolute;
@@ -132,7 +128,6 @@
       color: var(--void);
     }
 
-    /* Footer Status Bar */
     footer {
       border-top: 1px solid var(--dim-cyan);
       padding: 20px;
@@ -148,8 +143,8 @@
 </head>
 <body>
 
-  <div class="rec-status">
-    REC [<span id="timer">00:03:26</span>] // EK0VUS
+  <div class="station-status">
+    [TUNE: LOWLIGHT.FM] // EK0VUS
   </div>
 
   <header>
@@ -177,21 +172,13 @@
   <footer>
     <div>STATUS: <span class="glitch-text">STABLE</span></div>
     <div>BPM: <span id="bpm">124.00</span></div>
-    <div>LOC: ATX // USA</div>
+    <div>LOC: ATX</div>
   </footer>
 
   <script>
-    // Logic for the Amber REC timer
-    let seconds = 206; // Starting at 03:26
+    // Cleaned up the JS to remove the clunky timer and just focus on the subtle BPM drift
     setInterval(() => {
-      seconds++;
-      let mins = Math.floor(seconds / 60);
-      let secs = seconds % 60;
-      document.getElementById('timer').innerText = 
-        `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}:00`;
-      
-      // Gentle BPM drift
-      document.getElementById('bpm').innerText = (124 + Math.random() * 0.1).toFixed(2);
+      document.getElementById('bpm').innerText = (124 + (Math.random() * 0.2 - 0.1)).toFixed(2);
     }, 1000);
   </script>
 
