@@ -3,263 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ekovus — System Interface</title>
-
+  <title>E K O V U S // MIRAGE</title>
   <style>
     :root {
-      --bg: #000508;
-      --grid-color: rgba(0, 255, 255, 0.1);
-      --accent: #00ffff;
-      --accent-glow: rgba(0, 255, 255, 0.4);
-      --text: #ffffff;
-      --panel-border: rgba(0, 255, 255, 0.3);
+      --void: #020406;
+      --wireframe: #00ffff;
+      --amber: #ff9d00;
+      --dim-cyan: rgba(0, 255, 255, 0.2);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
 
     body {
-      min-height: 100vh;
+      background-color: var(--void);
+      color: var(--wireframe);
       font-family: "SF Mono", "Courier New", monospace;
-      background-color: var(--bg);
-      background-image: 
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-      background-size: 30px 30px;
-      color: var(--text);
       overflow-x: hidden;
+      min-height: 100vh;
+      /* Subtle scanline overlay */
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 4px, 3px 100%;
     }
 
-    /* Scanline & Vignette for that CRT look */
-    body::after {
-      content: "";
+    /* Amber "REC" Status - Inspired by your shattered.jpg */
+    .rec-status {
       position: fixed;
-      inset: 0;
-      background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.5) 100%);
-      pointer-events: none;
-      z-index: 10;
+      top: 30px;
+      left: 30px;
+      color: var(--amber);
+      font-size: 12px;
+      letter-spacing: 2px;
+      z-index: 100;
+      text-shadow: 0 0 8px var(--amber);
     }
 
+    /* Floating wireframe logo */
     header {
-      padding: 40px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--panel-border);
+      height: 40vh;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      border-bottom: 1px solid var(--dim-cyan);
+      position: relative;
     }
 
-    .logo {
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: 0.4em;
+    .logo-wireframe {
+      font-size: clamp(30px, 8vw, 60px);
+      letter-spacing: 15px;
       text-transform: uppercase;
-      color: var(--accent);
-      text-shadow: 0 0 15px var(--accent-glow);
+      font-weight: 200;
+      position: relative;
     }
 
-    nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    nav a {
-      color: var(--accent);
-      text-decoration: none;
-      padding: 8px 20px;
-      border: 1px solid var(--accent);
-      font-size: 12px;
-      text-transform: uppercase;
-      transition: all 0.3s;
-    }
-
-    nav a:hover {
-      background: var(--accent);
-      color: var(--bg);
-      box-shadow: 0 0 15px var(--accent);
-    }
-
+    /* Liminal Container */
     main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px;
-      border: 1px solid var(--panel-border);
-      background: rgba(0, 10, 15, 0.8);
-      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px;
     }
 
-    /* Geometric Accent Piece (The Crystal vibe) */
-    .hero-visual {
-      width: 100%;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-bottom: 1px solid var(--panel-border);
-      margin-bottom: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-visual::before {
-      content: "▽";
-      font-size: 200px;
-      color: var(--accent);
-      opacity: 0.2;
-      filter: blur(2px);
-      animation: pulse 4s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.2; }
-      50% { transform: scale(1.1); opacity: 0.4; }
-    }
-
-    .section-title {
-      font-size: 18px;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .music-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      border: 1px solid var(--panel-border);
-      padding: 15px;
-      transition: 0.3s;
-      position: relative;
-    }
-
-    .card:hover {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.1);
-    }
-
-    .card-img {
-      width: 100%;
-      aspect-ratio: 1;
-      border: 1px solid var(--panel-border);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      color: var(--panel-border);
-    }
-
-    .card-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 5px;
-    }
-
-    .card-body {
+    .section-label {
+      color: var(--amber);
       font-size: 10px;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 15px;
+      margin-bottom: 40px;
+      border-left: 2px solid var(--amber);
+      padding-left: 10px;
     }
 
-    .card a {
-      display: block;
-      text-align: center;
-      background: var(--accent);
-      color: var(--bg);
+    /* Shattered Grid */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .portal-item {
+      border: 1px solid var(--dim-cyan);
+      padding: 30px;
+      position: relative;
+      transition: all 0.5s ease;
+      background: rgba(0, 255, 255, 0.02);
+    }
+
+    .portal-item:hover {
+      border-color: var(--wireframe);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    /* Decorative wireframe corner from Rooftop Mirage.jpg */
+    .portal-item::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 15px;
+      height: 15px;
+      border-top: 2px solid var(--wireframe);
+      border-left: 2px solid var(--wireframe);
+    }
+
+    .portal-item h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+    }
+
+    .portal-item p {
+      font-size: 11px;
+      line-height: 1.8;
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .access-link {
+      color: var(--wireframe);
       text-decoration: none;
       font-size: 10px;
-      padding: 8px;
-      font-weight: bold;
+      border: 1px solid var(--wireframe);
+      padding: 8px 20px;
+      display: inline-block;
+      transition: 0.3s;
     }
 
+    .access-link:hover {
+      background: var(--wireframe);
+      color: var(--void);
+    }
+
+    /* Footer Status Bar */
     footer {
-      max-width: 1000px;
-      margin: 20px auto;
-      border: 1px solid var(--panel-border);
-      padding: 15px;
+      border-top: 1px solid var(--dim-cyan);
+      padding: 20px;
+      font-size: 9px;
       display: flex;
       justify-content: space-between;
-      font-size: 10px;
-      color: var(--accent);
-      background: rgba(0, 10, 15, 0.8);
+      opacity: 0.5;
     }
 
-    .status-item { opacity: 0.8; }
-
-    @media (max-width: 600px) {
-      header { flex-direction: column; gap: 20px; }
-      footer { flex-direction: column; gap: 10px; text-align: center; }
-    }
+    .glitch-text { animation: blink 1s infinite steps(1); }
+    @keyframes blink { 50% { opacity: 0; } }
   </style>
 </head>
 <body>
 
+  <div class="rec-status">
+    REC [<span id="timer">00:03:26</span>] // EK0VUS
+  </div>
+
   <header>
-    <div class="logo">EK0VUS</div>
-    <nav>
-      <a href="#music">Music</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="logo-wireframe">Ekovus</div>
   </header>
 
   <main>
-    <div class="hero-visual">
-        </div>
+    <div class="section-label">TRANSMISSION_FEEDS</div>
+    
+    <div class="portal-grid">
+      <div class="portal-item">
+        <h3>LATEST_ENTRY</h3>
+        <p>Speakeasy underground dark energy. Technical house designed for the transition from twilight to early morning.</p>
+        <a href="https://soundcloud.com/ekovus" class="access-link">INITIALIZE_AUDIO</a>
+      </div>
 
-    <div class="section-title">
-      <span>SOUND CATALOG</span>
-      <span style="font-size: 12px;">🔍</span>
-    </div>
-
-    <div class="music-grid">
-      <article class="card">
-        <div class="card-img">◇</div>
-        <div class="card-title">Featured Focus</div>
-        <div class="card-body">Latest production: High-fidelity deep house.</div>
-        <a href="https://soundcloud.com/ekovus">INITIALIZE</a>
-      </article>
-
-      <article class="card">
-        <div class="card-img">◈</div>
-        <div class="card-title">lowlightFM</div>
-        <div class="card-body">Continuous mix series for late-night rooms.</div>
-        <a href="#">ACCESS STREAM</a>
-      </article>
-
-      <article class="card">
-        <div class="card-img">⬙</div>
-        <div class="card-title">Archive</div>
-        <div class="card-body">Full discography streaming on Spotify.</div>
-        <a href="#">OPEN SOURCE</a>
-      </article>
+      <div class="portal-item">
+        <h3>LOWLIGHT_FM</h3>
+        <p>Continuous mix series. Opening support utility and late-night atmosphere protocols.</p>
+        <a href="https://soundcloud.com/ekovus/sets/lowlight-fm-and-opening-support-sets" class="access-link">ACCESS_STREAM</a>
+      </div>
     </div>
   </main>
 
   <footer>
-    <div class="status-item">SYSTEM: STABLE</div>
-    <div class="status-item">BPM: <span id="bpm-sync">124.0</span></div>
-    <div class="status-item">TIME: <span id="clock-sync">00:00:00</span></div>
-    <div class="status-item">LOC: ATX_USA</div>
+    <div>STATUS: <span class="glitch-text">STABLE</span></div>
+    <div>BPM: <span id="bpm">124.00</span></div>
+    <div>LOC: ATX // USA</div>
   </footer>
 
   <script>
+    // Logic for the Amber REC timer
+    let seconds = 206; // Starting at 03:26
     setInterval(() => {
-      const now = new Date();
-      document.getElementById('clock-sync').innerText = now.toTimeString().split(' ')[0];
-      const drift = (124 + (Math.random() * 0.4 - 0.2)).toFixed(1);
-      document.getElementById('bpm-sync').innerText = drift;
+      seconds++;
+      let mins = Math.floor(seconds / 60);
+      let secs = seconds % 60;
+      document.getElementById('timer').innerText = 
+        `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}:00`;
+      
+      // Gentle BPM drift
+      document.getElementById('bpm').innerText = (124 + Math.random() * 0.1).toFixed(2);
     }, 1000);
   </script>
 
